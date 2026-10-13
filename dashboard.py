@@ -1,7 +1,7 @@
 """UrbanPulse Nepal exploratory dashboard.
 
 Run from the repository root with:
-    streamlit run src/dashboard.py
+    streamlit run dashboard.py
 
 The dashboard reads saved outputs from notebooks 01–07. It does not download data
 or refit models. All model results remain descriptive and are shown with their
@@ -19,7 +19,7 @@ import plotly.express as px
 import streamlit as st
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parent
 DATA_ROOT = ROOT / "data"
 PROCESSED_ROOT = DATA_ROOT / "processed"
 
@@ -361,4 +361,5 @@ else:
     if temporal_report:
         st.json(temporal_report)
     st.caption("Source: BIPAD Portal API. Hazard values remain numeric IDs unless verified labels are joined in a future data-preparation step.")
+
 
