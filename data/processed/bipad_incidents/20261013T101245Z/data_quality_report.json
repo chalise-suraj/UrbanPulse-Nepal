@@ -1,0 +1,41 @@
+{
+  "project": "UrbanPulse Nepal",
+  "source_endpoint": "https://bipadportal.gov.np/api/v1/incident/",
+  "source_snapshot": "20261013T101245Z",
+  "source_retrieved_at_utc": "2026-10-13T10:12:45.366913+00:00",
+  "generated_at_utc": "2026-10-13T10:23:55.126853+00:00",
+  "rows": 64735,
+  "input_rows": 64735,
+  "duplicate_ids_removed": 0,
+  "quality_audit": {
+    "snapshot_folder": "20261013T101245Z",
+    "retrieved_at_utc": "2026-10-13T10:12:45.366913+00:00",
+    "input_rows": 64735,
+    "processed_rows": 64735,
+    "duplicate_ids_removed": 0,
+    "missing_ids": 0,
+    "api_reported_total": 9223372036854775807,
+    "pagination_complete": false,
+    "retrieval_stop_reason": "Empty results on page 66.",
+    "missing_or_invalid_coordinates": 0,
+    "coordinates_outside_broad_nepal_bounds": 0,
+    "hazard_id_count": 20,
+    "incident_date_missing_or_unparseable": 0,
+    "incident_date_min": "2011-04-14T00:00:00+05:45",
+    "incident_date_max": "2026-10-13T00:00:00+05:45",
+    "created_date_missing_or_unparseable": 0,
+    "created_date_min": "2019-04-09T12:38:49.481389+05:45",
+    "created_date_max": "2026-10-13T09:45:05.271986+05:45"
+  },
+  "coverage_limitation": "Pagination ended on an empty page, but API count was an implausible int64 maximum sentinel. Completeness of historical coverage is unverified.",
+  "hazard_label_limitation": "Hazard IDs are retained as IDs; readable labels require a verified BIPAD hazard lookup.",
+  "feature_definitions": {
+    "longitude": "First GeoJSON point coordinate.",
+    "latitude": "Second GeoJSON point coordinate.",
+    "coordinates_present": "Both coordinates parse as finite numbers.",
+    "coordinates_in_broad_nepal_bounds": "Finite point with latitude 26–31 and longitude 80–89; broad sanity check only.",
+    "incident_year": "Year of incidentOn after conversion to Asia/Kathmandu.",
+    "incident_month": "Month of incidentOn after conversion to Asia/Kathmandu.",
+    "incident_season": "Nepal calendar month grouped into Winter (Dec–Feb), Pre-monsoon (Mar–May), Monsoon (Jun–Sep), Post-monsoon (Oct–Nov)."
+  }
+}

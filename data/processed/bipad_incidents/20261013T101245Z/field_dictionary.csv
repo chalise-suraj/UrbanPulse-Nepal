@@ -1,0 +1,9 @@
+﻿field,definition
+longitude,First coordinate from GeoJSON point.coordinates; longitude order verified from sample records.
+latitude,Second coordinate from GeoJSON point.coordinates.
+coordinates_present,Both coordinates parsed as finite numeric values.
+coordinates_in_broad_nepal_bounds,Latitude is 26–31 and longitude is 80–89; broad check only.
+hazard_id,Original BIPAD hazard identifier stored as a string; no label inferred.
+incident_year,Year from incidentOn converted to Asia/Kathmandu.
+incident_month,Month from incidentOn converted to Asia/Kathmandu.
+incident_season,Winter Dec–Feb; Pre-monsoon Mar–May; Monsoon Jun–Sep; Post-monsoon Oct–Nov.
