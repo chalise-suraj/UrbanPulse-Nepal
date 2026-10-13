@@ -1,0 +1,6 @@
+{
+  "count": 9223372036854775807,
+  "next": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=8000",
+  "previous": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=6000",
+  "results": []
+}

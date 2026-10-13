@@ -1,0 +1,6 @@
+{
+  "count": 9223372036854775807,
+  "next": "https://bipadportal.gov.np/api/v1/municipality/?limit=1000&offset=2000",
+  "previous": "https://bipadportal.gov.np/api/v1/municipality/?limit=1000",
+  "results": []
+}

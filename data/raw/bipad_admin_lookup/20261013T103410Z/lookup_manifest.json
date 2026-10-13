@@ -1,0 +1,86 @@
+{
+  "ward": {
+    "endpoint": "https://bipadportal.gov.np/api/v1/ward/",
+    "retrieved_at_utc": "2026-10-13T10:34:10.800289+00:00",
+    "pages_saved": 8,
+    "records_received": 6803,
+    "api_reported_total": 9223372036854775807,
+    "pagination_complete": false,
+    "stop_reason": "Empty results on page 8.",
+    "errors": [],
+    "pages": [
+      {
+        "page": 1,
+        "url": "https://bipadportal.gov.np/api/v1/ward/",
+        "status_code": 200,
+        "file": "ward_page_0001.json"
+      },
+      {
+        "page": 2,
+        "url": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=1000",
+        "status_code": 200,
+        "file": "ward_page_0002.json"
+      },
+      {
+        "page": 3,
+        "url": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=2000",
+        "status_code": 200,
+        "file": "ward_page_0003.json"
+      },
+      {
+        "page": 4,
+        "url": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=3000",
+        "status_code": 200,
+        "file": "ward_page_0004.json"
+      },
+      {
+        "page": 5,
+        "url": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=4000",
+        "status_code": 200,
+        "file": "ward_page_0005.json"
+      },
+      {
+        "page": 6,
+        "url": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=5000",
+        "status_code": 200,
+        "file": "ward_page_0006.json"
+      },
+      {
+        "page": 7,
+        "url": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=6000",
+        "status_code": 200,
+        "file": "ward_page_0007.json"
+      },
+      {
+        "page": 8,
+        "url": "https://bipadportal.gov.np/api/v1/ward/?limit=1000&offset=7000",
+        "status_code": 200,
+        "file": "ward_page_0008.json"
+      }
+    ]
+  },
+  "municipality": {
+    "endpoint": "https://bipadportal.gov.np/api/v1/municipality/",
+    "retrieved_at_utc": "2026-10-13T10:34:10.800289+00:00",
+    "pages_saved": 2,
+    "records_received": 774,
+    "api_reported_total": 9223372036854775807,
+    "pagination_complete": false,
+    "stop_reason": "Empty results on page 2.",
+    "errors": [],
+    "pages": [
+      {
+        "page": 1,
+        "url": "https://bipadportal.gov.np/api/v1/municipality/",
+        "status_code": 200,
+        "file": "municipality_page_0001.json"
+      },
+      {
+        "page": 2,
+        "url": "https://bipadportal.gov.np/api/v1/municipality/?limit=1000&offset=1000",
+        "status_code": 200,
+        "file": "municipality_page_0002.json"
+      }
+    ]
+  }
+}
