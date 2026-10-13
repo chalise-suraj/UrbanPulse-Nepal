@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/urbanpulse_banner.svg" alt="UrbanPulse Nepal — exploring historical disaster reports" width="100%">
+  <img src="docs/assets/nepal_report_map.png" alt="Map of sampled incident report coordinates from the saved BIPAD Nepal dataset" width="100%">
 </p>
 
 <p align="center">
@@ -34,7 +34,7 @@ BIPAD is Nepal's disaster information portal, with its own incident mapping and 
 ## Analysis workflow
 
 <p align="center">
-  <img src="docs/assets/analysis_workflow.svg" alt="BIPAD source records flow through audit, exploratory analyses, and the UrbanPulse dashboard" width="100%">
+  <img src="docs/assets/analysis_workflow.png" alt="BIPAD source records flow through audit, exploratory analyses, and the UrbanPulse dashboard" width="100%">
 </p>
 
 Run notebooks 01–07 in numerical order. Each notebook records its findings at the end.
@@ -52,7 +52,7 @@ Run notebooks 01–07 in numerical order. Each notebook records its findings at 
 ### Observed report counts
 
 <p align="center">
-  <img src="docs/assets/annual_report_counts.svg" alt="Annual counts of incident reports in the saved BIPAD retrieval; first and last observed years are partial" width="100%">
+  <img src="docs/assets/annual_report_counts.png" alt="Annual counts of incident reports in the saved BIPAD retrieval; first and last observed years are partial" width="100%">
 </p>
 
 This chart is generated from the saved annual-count output. Counts depend on reporting and retrieval coverage; they do not measure the true number or severity of disasters. The first and last observed years are partial.

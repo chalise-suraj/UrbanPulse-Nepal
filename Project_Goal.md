@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/urbanpulse_banner.svg" alt="UrbanPulse Nepal — exploring historical disaster reports" width="100%">
+  <img src="docs/assets/bipad_urbanpulse_comparison.png" alt="Illustrated comparison of BIPAD's source platform and UrbanPulse's retrospective analysis workspace" width="100%">
 </p>
 
 <p align="center">
@@ -61,10 +61,6 @@ The analytical notebooks are complete through temporal pattern analysis, and the
 See [README: methods and findings](README.md#methods-and-findings), the [saved model comparison](reports/model_comparison.csv), and the [data-quality report](data/processed/bipad_incidents/20261013T101245Z/data_quality_report.json).
 
 ## Workflow
-
-<p align="center">
-  <img src="docs/assets/analysis_workflow.svg" alt="UrbanPulse workflow from BIPAD incident retrieval to audit, exploratory analysis, and dashboard" width="100%">
-</p>
 
 1. Retrieve paginated incident and administrative records from the BIPAD public API.
 2. Audit identifiers, dates, coordinates, and joins, then save a processed snapshot.
