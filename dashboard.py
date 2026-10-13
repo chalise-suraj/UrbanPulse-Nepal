@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import ast
 import json
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -87,6 +88,41 @@ st.markdown(
       }}
       .stApp [data-testid="stCaptionContainer"] {{ font-size: .9rem; }}
       div[data-testid="stRadio"] [role="radiogroup"] label {{ font-weight: 600; }}
+      /* Select menus and calendars are rendered in a portal outside the
+         sidebar, so style their popovers globally for readable options. */
+      div[data-baseweb="popover"],
+      div[data-baseweb="popover"] *,
+      div[role="listbox"],
+      div[role="listbox"] [role="option"],
+      div[data-baseweb="calendar"],
+      div[data-baseweb="calendar"] button,
+      div[data-baseweb="calendar"] [role="gridcell"],
+      [role="dialog"],
+      [role="dialog"] *,
+      [role="grid"],
+      [role="grid"] *,
+      table[aria-label*="Choose date"],
+      table[aria-label*="Choose date"] *,
+      [data-testid*="calendar"],
+      [data-testid*="calendar"] *,
+      [id*="calendar"],
+      [id*="calendar"] *,
+      button[aria-haspopup],
+      button[aria-haspopup] * {{
+        color: #18382a !important;
+        -webkit-text-fill-color: #18382a !important;
+        opacity: 1 !important;
+      }}
+      div[role="listbox"] [role="option"] {{ background: #ffffff !important; }}
+      div[role="listbox"] [role="option"]:hover,
+      div[role="listbox"] [role="option"][aria-selected="true"] {{ background: #e3efe6 !important; }}
+      div[data-baseweb="calendar"] button[aria-selected="true"] {{
+        background: #176447 !important;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+      }}
+      [role="dialog"] [role="gridcell"][aria-selected="true"],
+      [role="dialog"] [aria-selected="true"] {{ background: #e3efe6 !important; }}
       section[data-testid="stSidebar"] {{ background: linear-gradient(180deg,#123b2c 0%,#174b36 100%); border-right: 1px solid #dfe8e1; }}
       section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
       section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
@@ -122,6 +158,8 @@ st.markdown(
       section[data-testid="stSidebar"] [data-baseweb="tag"] {{ color: #18382a !important; background: #e2eee5 !important; }}
       section[data-testid="stSidebar"] [data-testid="stDateInput"] *,
       section[data-testid="stSidebar"] [data-testid="stDateInput"] input {{ color: #18382a !important; -webkit-text-fill-color: #18382a !important; opacity: 1 !important; }}
+      section[data-testid="stSidebar"] [data-testid="stDateInput"] [data-testid="stWidgetLabel"],
+      section[data-testid="stSidebar"] [data-testid="stDateInput"] [data-testid="stWidgetLabel"] * {{ color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; opacity: 1 !important; }}
       section[data-testid="stSidebar"] [data-testid="stDateInput"] [data-baseweb="input"] > div {{ background: #ffffff !important; }}
       section[data-testid="stSidebar"] [data-testid="stButton"] button {{ background: #dcebe0 !important; color: #123b2c !important; border-color: #dcebe0 !important; }}
       section[data-testid="stSidebar"] [data-testid="stButton"] button:hover {{ background: #cce1d2 !important; color: #123b2c !important; border-color: #cce1d2 !important; }}
@@ -187,7 +225,7 @@ def parse_wards(value: Any) -> list[Any]:
 
 
 def reset_global_filters() -> None:
-    st.session_state["global_date_filter"] = (min_date, max_date)
+    st.session_state["global_date_filter_v2"] = (min_date, max_date)
     st.session_state["global_hazard_filter"] = "All hazard types"
     st.session_state["global_municipality_filter"] = "All municipalities"
 
@@ -224,6 +262,29 @@ def load_incidents(records_path: str, municipality_lookup_path: str | None) -> p
         frame.loc[municipalities.index, "municipality_name"] = municipalities["municipality_name"]
         frame = frame.reset_index()
     return frame
+
+
+def normalize_date_range(value: Any, fallback_start: date, fallback_end: date) -> tuple[date, date]:
+    """Return two scalar dates even if widget state is partially selected or nested."""
+    selected: list[date] = []
+
+    def collect(item: Any) -> None:
+        if isinstance(item, datetime):
+            selected.append(item.date())
+        elif isinstance(item, date):
+            selected.append(item)
+        elif isinstance(item, (tuple, list)):
+            for child in item:
+                collect(child)
+
+    collect(value)
+    if not selected:
+        start, end = fallback_start, fallback_end
+    elif len(selected) == 1:
+        start = end = selected[0]
+    else:
+        start, end = min(selected), max(selected)
+    return start, end
 
 
 DATASET_DIR = latest_artifact_dir(PROCESSED_ROOT / "bipad_incidents", "incidents_processed.csv")
@@ -266,12 +327,9 @@ with st.sidebar:
         value=(min_date, max_date),
         min_value=min_date,
         max_value=max_date,
-        key="global_date_filter",
+        key="global_date_filter_v2",
     )
-    if isinstance(selected_dates, (tuple, list)) and len(selected_dates) == 2:
-        date_start, date_end = selected_dates
-    else:
-        date_start = date_end = selected_dates
+    date_start, date_end = normalize_date_range(selected_dates, min_date, max_date)
     selected_hazard = st.selectbox(
         "Hazard type",
         ["All hazard types"] + hazard_options,
