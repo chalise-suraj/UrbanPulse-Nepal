@@ -56,18 +56,22 @@ st.markdown(
       div[data-testid="stColumn"]:has([data-testid="stRadio"]) h1,
       div[data-testid="stColumn"]:has([data-testid="stRadio"]) h2,
       div[data-testid="stColumn"]:has([data-testid="stRadio"]) h3,
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) p,
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) label {{ color: #edf5ef !important; }}
+      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stMarkdownContainer"] p {{ color: #edf5ef !important; }}
       div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stCaptionContainer"] {{ color: #c5d8ca !important; }}
       div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stWidgetLabel"] p {{ color: #d8e8dc !important; }}
       div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stRadio"] label {{
         padding: .45rem .55rem; border-radius: 9px; transition: background .18s ease, transform .18s ease;
       }}
+      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stRadio"] label p {{ color: #edf5ef !important; }}
       div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stRadio"] label:hover {{
         background: rgba(255,255,255,.10); transform: translateX(2px);
       }}
       div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-baseweb="select"] > div,
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) input {{ background: #fbfdfb; }}
+      div[data-testid="stColumn"]:has([data-testid="stRadio"]) input {{ background: #fbfdfb !important; color: #18382a !important; }}
+      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-baseweb="select"] span,
+      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-baseweb="tag"] {{ color: #18382a !important; }}
+      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [role="option"] {{ color: #18382a !important; background: #fff !important; }}
+      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-baseweb="tag"] {{ background: #e2eee5 !important; }}
       .brand-mark {{ width: 40px; height: 40px; border-radius: 12px; background: #d8eddf; color: #123b2c;
         display: inline-flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: .7rem; }}
       .eyebrow {{ text-transform: uppercase; letter-spacing: .13em; font-size: .68rem; color: #809086; font-weight: 700; }}
@@ -206,9 +210,9 @@ with left:
         selected_hazards = st.multiselect(
             "Hazard ID",
             hazard_options,
-            default=hazard_options,
-            placeholder="All hazard IDs",
-            help="Numeric BIPAD IDs are shown until a verified label lookup is added.",
+            default=[],
+            placeholder="All hazards · search by ID",
+            help="Leave empty to include every hazard. Search and select an ID only when you want to narrow the dashboard.",
             key="global_hazard_filter",
         )
         selected_municipality = st.selectbox(
@@ -234,8 +238,6 @@ local_days = filtered["incident_datetime"].dt.date
 filtered = filtered.loc[local_days.between(date_start, date_end)]
 if selected_hazards:
     filtered = filtered.loc[filtered["hazard_id"].astype(str).isin(selected_hazards)]
-else:
-    filtered = filtered.iloc[0:0]
 if selected_municipality != "All municipalities":
     filtered = filtered.loc[filtered["municipality_name"] == selected_municipality]
 filtered = filtered.copy()
@@ -350,12 +352,10 @@ with main:
                 zoom_start=6,
                 min_zoom=5,
                 max_bounds=True,
-                tiles=None,
+                tiles="OpenStreetMap",
                 control_scale=True,
                 prefer_canvas=True,
             )
-            folium.TileLayer("CartoDB positron", name="Light basemap", control=True, show=True).add_to(folium_map)
-            folium.TileLayer("OpenStreetMap", name="Street basemap", control=True, show=False).add_to(folium_map)
             coordinates = points[["latitude", "longitude"]].to_numpy().tolist()
             if mode == "Density heatmap" and coordinates:
                 heat_layer = folium.FeatureGroup(name="Incident density", show=True)
