@@ -29,67 +29,94 @@ FOREST = "#103b2c"
 MINT = "#74aa8c"
 INK = "#1c2c23"
 MUTED = "#68786e"
-PALE = "#eef4ef"
 GOLD = "#cf9c3f"
+
+# English titles verified against BIPAD's public /api/v1/hazard/{id}/ records.
+HAZARD_LABELS = {
+    "2": "Animal Incidents",
+    "3": "Avalanche",
+    "4": "Boat Capsize",
+    "5": "Bridge Collapse",
+    "6": "Cold Wave",
+    "7": "Drowning",
+    "8": "Earthquake",
+    "9": "Epidemic",
+    "10": "Fire",
+    "11": "Flood",
+    "12": "Forest Fire",
+    "14": "Heavy Rainfall",
+    "16": "High Altitude",
+    "17": "Landslide",
+    "20": "Snake Bite",
+    "21": "Snow Storm",
+    "22": "Storm",
+    "23": "Thunderbolt",
+    "24": "Wind Storm",
+    "45": "Others (Non-Natural)",
+}
 
 st.set_page_config(
     page_title="UrbanPulse Nepal",
     page_icon="🌿",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
 )
 
 st.markdown(
     f"""
     <style>
-      :root {{ --forest: {FOREST}; --green: {GREEN}; --mint: {MINT}; --ink: {INK}; --muted: {MUTED}; }}
-      .stApp {{ background: #f4f7f3; color: var(--ink); }}
-      [data-testid="stHeader"] {{ background: rgba(244,247,243,.94); }}
+      :root {{ --forest: {FOREST}; --green: {GREEN}; --mint: {MINT}; --ink: {INK}; }}
+      .stApp {{ background: #f5f7f5; color: var(--ink); }}
+      [data-testid="stHeader"] {{ background: rgba(245,247,245,.96); }}
       [data-testid="stToolbar"] {{ right: 1rem; }}
-      .block-container {{ max-width: 1680px; padding: 1.1rem 1.8rem 2.5rem; }}
-      div[data-testid="stColumn"] {{ min-width: 0; }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) {{
-        background: linear-gradient(160deg, #123b2c 0%, #174b36 100%);
-        border-radius: 18px; padding: 1.25rem 1rem 1.4rem; min-height: 78vh;
-        box-shadow: 0 12px 28px rgba(17,54,39,.12);
-      }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) h1,
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) h2,
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) h3,
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stMarkdownContainer"] p {{ color: #edf5ef !important; }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stCaptionContainer"] {{ color: #c5d8ca !important; }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stWidgetLabel"] p {{ color: #d8e8dc !important; }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stRadio"] label {{
-        padding: .45rem .55rem; border-radius: 9px; transition: background .18s ease, transform .18s ease;
-      }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stRadio"] label p {{ color: #edf5ef !important; }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-testid="stRadio"] label:hover {{
-        background: rgba(255,255,255,.10); transform: translateX(2px);
-      }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-baseweb="select"] > div,
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) input {{ background: #fbfdfb !important; color: #18382a !important; }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-baseweb="select"] span,
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-baseweb="tag"] {{ color: #18382a !important; }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [role="option"] {{ color: #18382a !important; background: #fff !important; }}
-      div[data-testid="stColumn"]:has([data-testid="stRadio"]) [data-baseweb="tag"] {{ background: #e2eee5 !important; }}
-      .brand-mark {{ width: 40px; height: 40px; border-radius: 12px; background: #d8eddf; color: #123b2c;
-        display: inline-flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: .7rem; }}
-      .eyebrow {{ text-transform: uppercase; letter-spacing: .13em; font-size: .68rem; color: #809086; font-weight: 700; }}
-      .page-title {{ font-size: 1.8rem; line-height: 1.15; font-weight: 750; color: #18382a; margin: .1rem 0 .2rem; }}
-      .page-subtitle {{ color: #718077; font-size: .94rem; margin-bottom: .9rem; }}
-      .coverage-pill {{ display: inline-block; background: #fff2d7; color: #70531c; border: 1px solid #ead6a6;
-        border-radius: 999px; font-size: .72rem; font-weight: 700; padding: .3rem .65rem; }}
-      .section-label {{ color: #748278; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; }}
-      div[data-testid="stMetric"] {{ background: white; border: 1px solid #e2e9e2; border-radius: 14px; padding: .85rem 1rem; box-shadow: 0 2px 8px rgba(31,53,40,.035); transition: transform .18s ease, box-shadow .18s ease; }}
+      .block-container {{ max-width: 1540px; padding: 1.5rem 2rem 3rem; }}
+      .stApp [data-testid="stMarkdownContainer"] p {{ color: #34483c !important; -webkit-text-fill-color: #34483c !important; opacity: 1 !important; }}
+      section[data-testid="stSidebar"] {{ background: linear-gradient(180deg,#123b2c 0%,#174b36 100%); border-right: 1px solid #dfe8e1; }}
+      section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
+      section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
+      section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3,
+      section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+      section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {{ color: #edf5ef !important; }}
+      section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] * {{ color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-weight: 700; opacity: 1 !important; }}
+      section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {{ color: #c5d8ca !important; }}
+      section[data-testid="stSidebar"] [data-testid="stRadio"] label {{ padding: .55rem .7rem; border-radius: 9px; }}
+      section[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {{ background: rgba(255,255,255,.1); }}
+      section[data-testid="stSidebar"] [data-testid="stRadio"] label p {{ color: #edf5ef !important; }}
+      section[data-testid="stSidebar"] [data-baseweb="select"] > div,
+      section[data-testid="stSidebar"] input {{ background: #fff !important; color: #18382a !important; }}
+      section[data-testid="stSidebar"] [data-baseweb="select"] *,
+      section[data-testid="stSidebar"] [data-baseweb="select"] span,
+      section[data-testid="stSidebar"] [data-baseweb="select"] input {{ color: #18382a !important; -webkit-text-fill-color: #18382a !important; opacity: 1 !important; }}
+      section[data-testid="stSidebar"] [data-baseweb="select"] input::placeholder {{ color: #5a6a5f !important; -webkit-text-fill-color: #5a6a5f !important; opacity: 1 !important; }}
+      section[data-testid="stSidebar"] [data-baseweb="tag"] {{ color: #18382a !important; background: #e2eee5 !important; }}
+      section[data-testid="stSidebar"] [data-testid="stDateInput"] *,
+      section[data-testid="stSidebar"] [data-testid="stDateInput"] input {{ color: #18382a !important; -webkit-text-fill-color: #18382a !important; opacity: 1 !important; }}
+      section[data-testid="stSidebar"] [data-testid="stDateInput"] [data-baseweb="input"] > div {{ background: #ffffff !important; }}
+      section[data-testid="stSidebar"] [data-testid="stButton"] button {{ background: #dcebe0 !important; color: #123b2c !important; border-color: #dcebe0 !important; }}
+      section[data-testid="stSidebar"] [data-testid="stButton"] button:hover {{ background: #cce1d2 !important; color: #123b2c !important; border-color: #cce1d2 !important; }}
+      .brand-mark {{ width: 42px; height: 42px; border-radius: 13px; background: #d8eddf; color: #123b2c;
+        display: inline-flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: .6rem; }}
+      .section-label {{ color: #c5d8ca; font-size: .7rem; font-weight: 750; text-transform: uppercase; letter-spacing: .1em; }}
+      div[data-testid="stMetric"] {{ background: #fff; border: 1px solid #e1e8e2; border-radius: 14px; padding: .9rem 1rem; min-height: 105px; box-shadow: 0 3px 12px rgba(31,53,40,.035); transition: transform .18s ease, box-shadow .18s ease; }}
       div[data-testid="stMetric"]:hover {{ transform: translateY(-2px); box-shadow: 0 8px 18px rgba(31,53,40,.08); }}
-      div[data-testid="stMetricLabel"] p {{ color: #718077; font-size: .78rem; }}
-      div[data-testid="stMetricValue"] {{ color: #173d2b; font-size: 1.55rem; }}
-      div[data-testid="stVerticalBlockBorderWrapper"] {{ border-color: #e2e9e2; border-radius: 15px; background: white; }}
+      div[data-testid="stMetricLabel"], div[data-testid="stMetricLabel"] *, div[data-testid="stMetricLabel"] p {{ color: #34483c !important; -webkit-text-fill-color: #34483c !important; font-size: .82rem; font-weight: 750; opacity: 1 !important; }}
+      div[data-testid="stMetricValue"] {{ color: #173d2b; font-size: clamp(1.15rem,1.8vw,1.65rem); }}
+      div[data-testid="stVerticalBlockBorderWrapper"] {{ border-color: #e1e8e2; border-radius: 16px; background: #fff; }}
       .stButton button, .stDownloadButton button {{ border-radius: 10px; font-weight: 650; transition: all .18s ease; }}
       .stButton button:hover, .stDownloadButton button:hover {{ border-color: #176447; color: #176447; transform: translateY(-1px); }}
-      h2, h3 {{ color: #1a3c2b; }}
+      h2, h3, h4 {{ color: #173d2b !important; -webkit-text-fill-color: #173d2b !important; }}
+      h1 {{ color: #18382a !important; font-size: clamp(1.65rem,4vw,2.25rem) !important; line-height: 1.12 !important; }}
+      div[data-testid="stVerticalBlockBorderWrapper"] h2 {{ margin-top: .15rem; margin-bottom: .1rem; }}
       [data-testid="stDataFrame"] {{ border: 1px solid #e3eae3; border-radius: 12px; overflow: hidden; }}
-      @media (max-width: 900px) {{ .block-container {{ padding-left: .8rem; padding-right: .8rem; }} }}
+      @media (max-width: 900px) {{ .block-container {{ padding: 1rem .9rem 2rem; }} }}
+      @media (max-width: 760px) {{
+        .block-container {{ padding: .9rem .75rem 1.75rem; }}
+        div[data-testid="stHorizontalBlock"] {{ flex-wrap: wrap; gap: .7rem; }}
+        div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {{ flex: 1 1 100% !important; min-width: 0; }}
+      }}
+      @media (max-width: 640px) {{
+        .block-container {{ padding: .8rem .65rem 1.5rem; }}
+      }}
     </style>
     """,
     unsafe_allow_html=True,
@@ -128,9 +155,15 @@ def parse_wards(value: Any) -> list[Any]:
     return []
 
 
+def reset_global_filters() -> None:
+    st.session_state["global_date_filter"] = (min_date, max_date)
+    st.session_state["global_hazard_filter"] = "All hazard types"
+    st.session_state["global_municipality_filter"] = "All municipalities"
+
+
 @st.cache_data(show_spinner="Connecting incident points to BIPAD municipalities…")
-def load_incidents(snapshot_path: str, municipality_lookup_path: str | None) -> pd.DataFrame:
-    frame = pd.read_csv(snapshot_path, low_memory=False)
+def load_incidents(records_path: str, municipality_lookup_path: str | None) -> pd.DataFrame:
+    frame = pd.read_csv(records_path, low_memory=False)
     frame["id"] = frame["id"].astype("string")
     frame["incident_datetime"] = pd.to_datetime(
         frame.get("incidentOn_nepal"), errors="coerce", utc=True
@@ -162,105 +195,94 @@ def load_incidents(snapshot_path: str, municipality_lookup_path: str | None) -> 
     return frame
 
 
-SNAPSHOT_DIR = latest_artifact_dir(PROCESSED_ROOT / "bipad_incidents", "incidents_processed.csv")
-if SNAPSHOT_DIR is None:
+DATASET_DIR = latest_artifact_dir(PROCESSED_ROOT / "bipad_incidents", "incidents_processed.csv")
+if DATASET_DIR is None:
     st.error("Processed BIPAD records were not found. Run notebooks 01 and 02 first.")
     st.stop()
 
-SNAPSHOT_ID = SNAPSHOT_DIR.name
+DATASET_KEY = DATASET_DIR.name
 LOOKUP_DIR = latest_artifact_dir(DATA_ROOT / "raw" / "bipad_admin_lookup", "ward_to_municipality.csv")
-quality = read_json(str(SNAPSHOT_DIR / "data_quality_report.json")) if (SNAPSHOT_DIR / "data_quality_report.json").is_file() else {}
+quality = read_json(str(DATASET_DIR / "data_quality_report.json")) if (DATASET_DIR / "data_quality_report.json").is_file() else {}
 quality_audit = quality.get("quality_audit", {})
 incidents = load_incidents(
-    str(SNAPSHOT_DIR / "incidents_processed.csv"),
+    str(DATASET_DIR / "incidents_processed.csv"),
     str(LOOKUP_DIR / "ward_to_municipality.csv") if LOOKUP_DIR else None,
+)
+incidents["hazard_name"] = incidents["hazard_id"].map(
+    lambda value: HAZARD_LABELS.get(str(value), f"Other / unmapped hazard ({value})") if pd.notna(value) else "Unspecified"
 )
 
 NAV_ITEMS = ["Overview", "Nepal map", "Trends", "Municipalities", "Anomalies", "Model lab", "Data quality"]
 valid_dates = incidents["incident_datetime"].dropna()
 if valid_dates.empty:
-    st.error("No parseable incident dates are available in this snapshot.")
+    st.error("No parseable incident dates are available in the saved BIPAD records.")
     st.stop()
 
 min_date, max_date = valid_dates.min().date(), valid_dates.max().date()
-hazard_options = sorted(incidents["hazard_id"].dropna().astype(str).unique())
+hazard_options = sorted(incidents["hazard_name"].dropna().unique())
 municipality_options = sorted(incidents.loc[incidents["municipality_name"] != "Not mapped", "municipality_name"].dropna().unique())
 
-left, main = st.columns([0.235, 0.765], gap="large")
-with left:
-    with st.container(border=True):
-        st.markdown('<div class="brand-mark">✦</div>', unsafe_allow_html=True)
-        st.markdown("### URBANPULSE")
-        st.caption("NEPAL · DISASTER INTELLIGENCE")
-        st.markdown("<div class='section-label'>Workspace</div>", unsafe_allow_html=True)
-        page = st.radio("Workspace", NAV_ITEMS, index=1, label_visibility="collapsed", key="page_nav")
-        st.divider()
-        st.markdown("<div class='section-label'>Filters</div>", unsafe_allow_html=True)
-        selected_dates = st.date_input(
-            "Incident date",
-            value=(min_date, max_date),
-            min_value=min_date,
-            max_value=max_date,
-            key="global_date_filter",
-        )
-        if isinstance(selected_dates, (tuple, list)) and len(selected_dates) == 2:
-            date_start, date_end = selected_dates
-        else:
-            date_start = date_end = selected_dates
-        selected_hazards = st.multiselect(
-            "Hazard ID",
-            hazard_options,
-            default=[],
-            placeholder="All hazards · search by ID",
-            help="Leave empty to include every hazard. Search and select an ID only when you want to narrow the dashboard.",
-            key="global_hazard_filter",
-        )
-        selected_municipality = st.selectbox(
-            "Municipality",
-            ["All municipalities"] + municipality_options,
-            index=0,
-            key="global_municipality_filter",
-        )
-        if st.button("Reset filters", use_container_width=True):
-            for key in ("global_date_filter", "global_hazard_filter", "global_municipality_filter"):
-                st.session_state.pop(key, None)
-            st.rerun()
-        st.divider()
-        st.caption(f"Snapshot  ·  {SNAPSHOT_ID}")
-        st.caption("Source  ·  BIPAD Portal API")
-        st.markdown(
-            "<span class='coverage-pill'>Historical coverage unverified</span>",
-            unsafe_allow_html=True,
-        )
+with st.sidebar:
+    st.markdown('<div class="brand-mark">✦</div>', unsafe_allow_html=True)
+    st.markdown("### URBANPULSE")
+    st.caption("NEPAL · DISASTER INTELLIGENCE")
+    st.markdown("<div class='section-label'>Navigation</div>", unsafe_allow_html=True)
+    page = st.radio("Workspace", NAV_ITEMS, index=0, label_visibility="collapsed", key="main_nav_v2")
+    st.divider()
+    st.markdown("<div class='section-label'>Filter the records</div>", unsafe_allow_html=True)
+    selected_dates = st.date_input(
+        "Incident date",
+        value=(min_date, max_date),
+        min_value=min_date,
+        max_value=max_date,
+        key="global_date_filter",
+    )
+    if isinstance(selected_dates, (tuple, list)) and len(selected_dates) == 2:
+        date_start, date_end = selected_dates
+    else:
+        date_start = date_end = selected_dates
+    selected_hazard = st.selectbox(
+        "Hazard type",
+        ["All hazard types"] + hazard_options,
+        index=0,
+        help="Choose a BIPAD hazard name to filter the dashboard, or keep all hazards selected.",
+        key="global_hazard_filter",
+    )
+    selected_municipality = st.selectbox(
+        "Municipality",
+        ["All municipalities"] + municipality_options,
+        index=0,
+        key="global_municipality_filter",
+    )
+    st.button("Reset filters", use_container_width=True, on_click=reset_global_filters)
+    st.divider()
+    st.caption("Source: BIPAD Portal incident records")
+    st.caption("Historical archive completeness has not been verified.")
 
 filtered = incidents.copy()
 local_days = filtered["incident_datetime"].dt.date
 filtered = filtered.loc[local_days.between(date_start, date_end)]
-if selected_hazards:
-    filtered = filtered.loc[filtered["hazard_id"].astype(str).isin(selected_hazards)]
+if selected_hazard != "All hazard types":
+    filtered = filtered.loc[filtered["hazard_name"] == selected_hazard]
 if selected_municipality != "All municipalities":
     filtered = filtered.loc[filtered["municipality_name"] == selected_municipality]
 filtered = filtered.copy()
 
-period_text = "No matching dates"
-if not filtered.empty:
-    period_text = f"{filtered['incident_datetime'].min():%Y} — {filtered['incident_datetime'].max():%Y}"
-
-
-def header(title: str, subtitle: str) -> None:
-    st.markdown(f"<div class='page-title'>{title}</div><div class='page-subtitle'>{subtitle}</div>", unsafe_allow_html=True)
+selected_date_text = f"{date_start:%d %b %Y} — {date_end:%d %b %Y}"
 
 
 def metrics() -> None:
-    cols = st.columns(4)
+    cols = st.columns(3)
     values = [
-        ("INCIDENT RECORDS", f"{len(filtered):,}"),
-        ("MUNICIPALITIES", f"{filtered.loc[filtered['municipality_name'] != 'Not mapped', 'municipality_id'].nunique():,}"),
-        ("HAZARD IDS", f"{filtered['hazard_id'].nunique():,}"),
-        ("DATE WINDOW", period_text),
+        ("INCIDENT REPORTS", f"{len(filtered):,}"),
+        ("MUNICIPALITIES WITH REPORTS", f"{filtered.loc[filtered['municipality_name'] != 'Not mapped', 'municipality_id'].nunique():,}"),
+        ("HAZARD TYPES RECORDED", f"{filtered['hazard_name'].nunique():,}"),
     ]
     for col, (label, value) in zip(cols, values):
-        col.metric(label, value)
+        with col:
+            with st.container(border=True):
+                st.markdown(f"**{label}**")
+                st.markdown(f"## {value}")
 
 
 def chart_theme(fig: go.Figure, height: int = 340) -> go.Figure:
@@ -273,8 +295,8 @@ def chart_theme(fig: go.Figure, height: int = 340) -> go.Figure:
         hoverlabel=dict(bgcolor=FOREST, font_color="white"),
         legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0),
     )
-    fig.update_xaxes(showgrid=False, linecolor="#e3eae3")
-    fig.update_yaxes(gridcolor="#edf1ed", zeroline=False)
+    fig.update_xaxes(showgrid=False, linecolor="#e3eae3", tickfont=dict(color=INK), title_font=dict(color=INK))
+    fig.update_yaxes(gridcolor="#edf1ed", zeroline=False, tickfont=dict(color=INK), title_font=dict(color=INK))
     return fig
 
 
@@ -284,60 +306,64 @@ def panel_title(title: str, meta: str | None = None) -> None:
         st.caption(meta)
 
 
-with main:
-    st.markdown(
-        f"<div class='eyebrow'>BIPAD PORTAL · HISTORICAL ANALYSIS</div>"
-        f"<div style='display:flex;align-items:center;justify-content:space-between;gap:1rem'>"
-        f"<div><div class='page-title'>{page}</div><div class='page-subtitle'>Explore recorded disaster patterns across Nepal</div></div>"
-        f"<span class='coverage-pill'>Coverage not verified</span></div>",
-        unsafe_allow_html=True,
-    )
+with st.container():
+    st.title("Nepal disaster overview" if page == "Overview" else page)
+    st.caption(f"Explore recorded disaster reports by place, hazard and time · {selected_date_text}")
     metrics()
 
     if page == "Overview":
-        c1, c2 = st.columns([1.45, 1], gap="medium")
+        c1, c2 = st.columns([1.25, 1], gap="medium")
         with c1:
             with st.container(border=True):
-                panel_title("Incident activity", "Monthly reports in the selected window")
+                panel_title("Monthly incident reports", "Actual BIPAD records, grouped by incident month")
                 if filtered.empty:
-                    st.info("No records match the current filters.")
+                    st.info("No incident reports match these filters. Widen the date range or clear a filter.")
                 else:
-                    series = filtered.assign(month=filtered["incident_datetime"].dt.to_period("M").astype(str)).groupby("month").size().reset_index(name="Records")
-                    fig = px.area(series, x="month", y="Records", color_discrete_sequence=[GREEN])
-                    fig.update_traces(line=dict(width=2), fillcolor="rgba(23,100,71,.12)")
-                    st.plotly_chart(chart_theme(fig, 330), use_container_width=True)
+                    series = filtered.assign(month=filtered["incident_datetime"].dt.strftime("%Y-%m")).groupby("month").size().rename("Incident reports").reset_index()
+                    fig = px.bar(series, x="month", y="Incident reports", color_discrete_sequence=[GREEN])
+                    fig.update_traces(marker_line_width=0, hovertemplate="%{x}<br>%{y:,} reports<extra></extra>")
+                    fig.update_layout(xaxis_title="Incident month", yaxis_title="Reports", bargap=.22)
+                    st.plotly_chart(chart_theme(fig, 325), use_container_width=True)
         with c2:
             with st.container(border=True):
-                panel_title("Hazard mix", "Numeric IDs from BIPAD")
+                panel_title("Reports by hazard", "BIPAD hazard names · report counts, not risk estimates")
                 if filtered.empty:
-                    st.info("No records match the current filters.")
+                    st.info("No hazard counts to show for these filters.")
                 else:
-                    hazards = filtered["hazard_id"].astype(str).value_counts().head(8).rename_axis("Hazard ID").reset_index(name="Records")
-                    fig = px.bar(hazards.sort_values("Records"), x="Records", y="Hazard ID", orientation="h", color_discrete_sequence=[GREEN])
-                    st.plotly_chart(chart_theme(fig, 330), use_container_width=True)
+                    hazards = filtered["hazard_name"].value_counts().head(9).sort_values().rename_axis("Hazard").rename("Incident reports").reset_index()
+                    fig = px.bar(hazards, x="Incident reports", y="Hazard", orientation="h", color_discrete_sequence=[GREEN])
+                    fig.update_traces(text=hazards["Incident reports"], textposition="outside", cliponaxis=False, hovertemplate="%{y}<br>%{x:,} reports<extra></extra>")
+                    fig.update_layout(xaxis_title="Incident reports", yaxis_title="", margin=dict(l=8,r=30,t=24,b=8))
+                    st.plotly_chart(chart_theme(fig, 325), use_container_width=True)
         c3, c4 = st.columns([1, 1], gap="medium")
         with c3:
             with st.container(border=True):
-                panel_title("Seasonality", "Descriptive share of filtered records")
-                if not filtered.empty:
+                panel_title("Reports by season", "Calendar seasons derived from incident dates")
+                if filtered.empty:
+                    st.info("No seasonal counts to show for these filters.")
+                else:
                     order = ["Pre-monsoon", "Monsoon", "Post-monsoon", "Winter"]
-                    season = filtered["incident_season"].value_counts().reindex(order, fill_value=0).rename_axis("Season").reset_index(name="Records")
-                    fig = px.bar(season, x="Season", y="Records", color_discrete_sequence=[MINT])
+                    season = filtered["incident_season"].value_counts().reindex(order, fill_value=0).rename_axis("Season").rename("Incident reports").reset_index()
+                    fig = px.bar(season, x="Season", y="Incident reports", color_discrete_sequence=[MINT])
+                    fig.update_layout(xaxis_title="", yaxis_title="Incident reports")
                     st.plotly_chart(chart_theme(fig, 280), use_container_width=True)
         with c4:
             with st.container(border=True):
-                panel_title("Frequently reporting municipalities", "Record counts, not population-adjusted rates")
-                if not filtered.empty:
-                    places = filtered.loc[filtered["municipality_name"] != "Not mapped", "municipality_name"].value_counts().head(8).rename_axis("Municipality").reset_index(name="Records")
-                    fig = px.bar(places.sort_values("Records"), x="Records", y="Municipality", orientation="h", color_discrete_sequence=["#91b6a1"])
+                panel_title("Municipalities with most reports", "Raw report counts · not population-adjusted rates")
+                places = filtered.loc[filtered["municipality_name"] != "Not mapped", "municipality_name"].value_counts().head(8).sort_values().rename_axis("Municipality").rename("Incident reports").reset_index()
+                if places.empty:
+                    st.info("Municipality locations are not available for these filters.")
+                else:
+                    fig = px.bar(places, x="Incident reports", y="Municipality", orientation="h", color_discrete_sequence=["#91b6a1"])
+                    fig.update_layout(xaxis_title="Incident reports", yaxis_title="")
                     st.plotly_chart(chart_theme(fig, 280), use_container_width=True)
-        st.download_button("Download filtered records", filtered.to_csv(index=False).encode("utf-8-sig"), "urbanpulse_filtered_incidents.csv", "text/csv")
+        st.download_button("Download filtered incident records", filtered.to_csv(index=False).encode("utf-8-sig"), "urbanpulse_filtered_incidents.csv", "text/csv")
 
     elif page == "Nepal map":
         with st.container(border=True):
             panel_title("Incident map", "Pan, zoom, switch layers, and click near a point to inspect nearby reports")
             mode = st.radio("Map layer", ["Density heatmap", "DBSCAN groups", "Incident points"], horizontal=True, label_visibility="collapsed")
-            label_file = PROCESSED_ROOT / "dbscan" / SNAPSHOT_ID / "dbscan_labels.csv"
+            label_file = PROCESSED_ROOT / "dbscan" / DATASET_KEY / "dbscan_labels.csv"
             labels = read_csv(str(label_file)) if label_file.is_file() else None
             label_column = None
             if mode == "DBSCAN groups" and labels is not None:
@@ -373,7 +399,7 @@ with main:
                         color, cluster_text = "#9aa19d", "Noise"
                     else:
                         color, cluster_text = palette[int(cluster) % len(palette)], f"Cluster {int(cluster)}"
-                    tooltip = f"{row.get('title', 'Incident')} · {cluster_text} · hazard {row.get('hazard_id', 'unknown')}"
+                    tooltip = f"{row.get('title', 'Incident')} · {cluster_text} · {row.get('hazard_name', 'Unspecified hazard')}"
                     folium.CircleMarker([row['latitude'], row['longitude']], radius=3, color=color, fill=True, fill_opacity=.72, weight=1, tooltip=tooltip).add_to(point_layer)
                 point_layer.add_to(folium_map)
             elif mode == "Incident points" and coordinates:
@@ -381,9 +407,9 @@ with main:
                 marker_layer = MarkerCluster(name="Incident points (sample)", show=True, disableClusteringAtZoom=10)
                 for row in display_points.itertuples(index=False):
                     title = row.title if hasattr(row, "title") else "Incident"
-                    hazard = row.hazard_id if hasattr(row, "hazard_id") else "unknown"
+                    hazard = row.hazard_name if hasattr(row, "hazard_name") else "Unspecified hazard"
                     date = row.incidentOn if hasattr(row, "incidentOn") else "date unavailable"
-                    popup = folium.Popup(f"<b>{title}</b><br>Hazard ID: {hazard}<br>Date: {date}", max_width=320)
+                    popup = folium.Popup(f"<b>{title}</b><br>Hazard: {hazard}<br>Date: {date}", max_width=320)
                     folium.Marker([row.latitude, row.longitude], tooltip=str(title), popup=popup).add_to(marker_layer)
                 marker_layer.add_to(folium_map)
             folium.LayerControl(collapsed=False).add_to(folium_map)
@@ -394,7 +420,7 @@ with main:
                 height=610,
                 use_container_width=True,
                 returned_objects=["last_clicked"],
-                key=f"nepal_map_{mode}_{SNAPSHOT_ID}",
+                key=f"nepal_map_{mode}_{DATASET_KEY}",
             )
             st.caption(f"Showing {len(points):,} filtered coordinates. Marker layers are sampled for responsiveness; the heatmap uses all filtered points.")
             click = (map_result or {}).get("last_clicked")
@@ -404,7 +430,7 @@ with main:
                 nearby = points.loc[distance.idxmin()]
                 with st.expander("Nearest incident to map click", expanded=True):
                     st.write(f"**{nearby.get('title', 'Incident')}** · {nearby.get('municipality_name', 'Unknown municipality')}")
-                    st.caption(f"Hazard ID {nearby.get('hazard_id', 'unknown')} · {nearby.get('incidentOn', 'Date unavailable')} · record {nearby.get('id', '')}")
+                    st.caption(f"{nearby.get('hazard_name', 'Unspecified hazard')} · {nearby.get('incidentOn', 'Date unavailable')} · record {nearby.get('id', '')}")
         st.download_button("Download mapped records", points.to_csv(index=False).encode("utf-8-sig"), "urbanpulse_mapped_records.csv", "text/csv")
 
     elif page == "Trends":
@@ -428,18 +454,18 @@ with main:
                     fig.update_layout(height=390, margin=dict(l=6, r=6, t=18, b=6), showlegend=True)
                     st.plotly_chart(fig, use_container_width=True)
         with st.container(border=True):
-            panel_title("Hazard timeline", "Select hazard IDs in the left rail")
+            panel_title("Hazard timeline", "Select hazard names in the left filter panel")
             if not filtered.empty:
-                counts = filtered.assign(year=filtered["incident_datetime"].dt.year).groupby(["year", "hazard_id"]).size().reset_index(name="Records")
-                top = filtered["hazard_id"].value_counts().head(6).index.astype(str)
-                counts = counts[counts["hazard_id"].astype(str).isin(top)]
-                fig = px.area(counts, x="year", y="Records", color="hazard_id", line_group="hazard_id", color_discrete_sequence=[GREEN, MINT, "#d3a14a", "#487b8a", "#8a719c", "#c27b5d"])
-                fig.update_layout(legend_title_text="Hazard ID")
+                counts = filtered.assign(year=filtered["incident_datetime"].dt.year).groupby(["year", "hazard_name"]).size().reset_index(name="Incident reports")
+                top = filtered["hazard_name"].value_counts().head(6).index
+                counts = counts[counts["hazard_name"].isin(top)]
+                fig = px.area(counts, x="year", y="Incident reports", color="hazard_name", line_group="hazard_name", color_discrete_sequence=[GREEN, MINT, "#d3a14a", "#487b8a", "#8a719c", "#c27b5d"])
+                fig.update_layout(legend_title_text="Hazard")
                 st.plotly_chart(chart_theme(fig, 350), use_container_width=True)
-        st.caption("Counts are historical reports in this snapshot. Partial years and unverified source coverage limit year-to-year comparisons.")
+        st.caption("Counts are historical BIPAD reports. The source API reported an invalid total, so archive completeness cannot be confirmed.")
 
     elif page == "Municipalities":
-        profiles_path = PROCESSED_ROOT / "hierarchical" / SNAPSHOT_ID / "municipality_profiles.csv"
+        profiles_path = PROCESSED_ROOT / "hierarchical" / DATASET_KEY / "municipality_profiles.csv"
         profiles = read_csv(str(profiles_path)) if profiles_path.is_file() else None
         if profiles is None:
             st.info("Run notebook 04 to build municipality profiles.")
@@ -471,7 +497,7 @@ with main:
             with q2:
                 with st.container(border=True):
                     panel_title("Clustering quality", "Exploratory results; no robust final grouping was found")
-                    diag_path = PROCESSED_ROOT / "hierarchical" / SNAPSHOT_ID / "hierarchical_configuration_comparison.csv"
+                    diag_path = PROCESSED_ROOT / "hierarchical" / DATASET_KEY / "hierarchical_configuration_comparison.csv"
                     diagnostics = read_csv(str(diag_path)) if diag_path.is_file() else None
                     if diagnostics is not None:
                         fig = px.scatter(diagnostics, x="largest_cluster_size", y="silhouette", color="linkage", size="n_clusters", hover_data=["minimum_incidents", "smallest_cluster_size"], color_discrete_sequence=[GREEN, MINT, GOLD])
@@ -480,7 +506,7 @@ with main:
             st.download_button("Download municipality profiles", profiles.to_csv(index=False).encode("utf-8-sig"), "urbanpulse_municipality_profiles.csv", "text/csv")
 
     elif page == "Anomalies":
-        anomaly_path = PROCESSED_ROOT / "isolation_forest" / SNAPSHOT_ID / "municipality_month_anomaly_scores.csv"
+        anomaly_path = PROCESSED_ROOT / "isolation_forest" / DATASET_KEY / "municipality_month_anomaly_scores.csv"
         scores = read_csv(str(anomaly_path)) if anomaly_path.is_file() else None
         if scores is None:
             st.info("Run notebook 05 to generate Isolation Forest scores.")
@@ -536,13 +562,13 @@ with main:
             st.warning(quality.get("coverage_limitation", "Historical source coverage has not been verified."))
             with st.expander("Quality audit", expanded=True):
                 st.json(quality_audit)
-            manifest_path = DATA_ROOT / "raw" / "bipad_incidents" / SNAPSHOT_ID / "retrieval_manifest.json"
+            manifest_path = DATA_ROOT / "raw" / "bipad_incidents" / DATASET_KEY / "retrieval_manifest.json"
             if manifest_path.is_file():
                 with st.expander("Retrieval details"):
                     st.json(read_json(str(manifest_path)))
-            temporal_path = PROCESSED_ROOT / "temporal" / SNAPSHOT_ID / "temporal_coverage_report.json"
+            temporal_path = PROCESSED_ROOT / "temporal" / DATASET_KEY / "temporal_coverage_report.json"
             if temporal_path.is_file():
                 with st.expander("Temporal coverage"):
                     st.json(read_json(str(temporal_path)))
-            st.caption("Hazard categories are BIPAD numeric IDs; readable labels have not yet been joined.")
+            st.caption("Hazard names are joined from BIPAD's public hazard reference API.")
 
