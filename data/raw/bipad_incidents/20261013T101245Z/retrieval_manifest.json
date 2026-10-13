@@ -1,0 +1,417 @@
+{
+  "project": "UrbanPulse Nepal",
+  "source": "BIPAD Portal API",
+  "documentation_url": "https://bipadportal.gov.np/api/",
+  "endpoint": "https://bipadportal.gov.np/api/v1/incident/",
+  "retrieved_at_utc": "2026-10-13T10:12:45.366913+00:00",
+  "request_timeout_seconds": 45,
+  "max_pages_guard": 500,
+  "pages_saved": 66,
+  "records_received": 64735,
+  "api_reported_total": 9223372036854775807,
+  "pagination_complete": false,
+  "stop_reason": "Empty results on page 66.",
+  "page_errors": [],
+  "pages": [
+    {
+      "page": 1,
+      "url": "https://bipadportal.gov.np/api/v1/incident/",
+      "status_code": 200,
+      "file": "page_00001.json"
+    },
+    {
+      "page": 2,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=1000",
+      "status_code": 200,
+      "file": "page_00002.json"
+    },
+    {
+      "page": 3,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=2000",
+      "status_code": 200,
+      "file": "page_00003.json"
+    },
+    {
+      "page": 4,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=3000",
+      "status_code": 200,
+      "file": "page_00004.json"
+    },
+    {
+      "page": 5,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=4000",
+      "status_code": 200,
+      "file": "page_00005.json"
+    },
+    {
+      "page": 6,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=5000",
+      "status_code": 200,
+      "file": "page_00006.json"
+    },
+    {
+      "page": 7,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=6000",
+      "status_code": 200,
+      "file": "page_00007.json"
+    },
+    {
+      "page": 8,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=7000",
+      "status_code": 200,
+      "file": "page_00008.json"
+    },
+    {
+      "page": 9,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=8000",
+      "status_code": 200,
+      "file": "page_00009.json"
+    },
+    {
+      "page": 10,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=9000",
+      "status_code": 200,
+      "file": "page_00010.json"
+    },
+    {
+      "page": 11,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=10000",
+      "status_code": 200,
+      "file": "page_00011.json"
+    },
+    {
+      "page": 12,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=11000",
+      "status_code": 200,
+      "file": "page_00012.json"
+    },
+    {
+      "page": 13,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=12000",
+      "status_code": 200,
+      "file": "page_00013.json"
+    },
+    {
+      "page": 14,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=13000",
+      "status_code": 200,
+      "file": "page_00014.json"
+    },
+    {
+      "page": 15,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=14000",
+      "status_code": 200,
+      "file": "page_00015.json"
+    },
+    {
+      "page": 16,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=15000",
+      "status_code": 200,
+      "file": "page_00016.json"
+    },
+    {
+      "page": 17,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=16000",
+      "status_code": 200,
+      "file": "page_00017.json"
+    },
+    {
+      "page": 18,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=17000",
+      "status_code": 200,
+      "file": "page_00018.json"
+    },
+    {
+      "page": 19,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=18000",
+      "status_code": 200,
+      "file": "page_00019.json"
+    },
+    {
+      "page": 20,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=19000",
+      "status_code": 200,
+      "file": "page_00020.json"
+    },
+    {
+      "page": 21,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=20000",
+      "status_code": 200,
+      "file": "page_00021.json"
+    },
+    {
+      "page": 22,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=21000",
+      "status_code": 200,
+      "file": "page_00022.json"
+    },
+    {
+      "page": 23,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=22000",
+      "status_code": 200,
+      "file": "page_00023.json"
+    },
+    {
+      "page": 24,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=23000",
+      "status_code": 200,
+      "file": "page_00024.json"
+    },
+    {
+      "page": 25,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=24000",
+      "status_code": 200,
+      "file": "page_00025.json"
+    },
+    {
+      "page": 26,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=25000",
+      "status_code": 200,
+      "file": "page_00026.json"
+    },
+    {
+      "page": 27,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=26000",
+      "status_code": 200,
+      "file": "page_00027.json"
+    },
+    {
+      "page": 28,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=27000",
+      "status_code": 200,
+      "file": "page_00028.json"
+    },
+    {
+      "page": 29,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=28000",
+      "status_code": 200,
+      "file": "page_00029.json"
+    },
+    {
+      "page": 30,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=29000",
+      "status_code": 200,
+      "file": "page_00030.json"
+    },
+    {
+      "page": 31,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=30000",
+      "status_code": 200,
+      "file": "page_00031.json"
+    },
+    {
+      "page": 32,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=31000",
+      "status_code": 200,
+      "file": "page_00032.json"
+    },
+    {
+      "page": 33,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=32000",
+      "status_code": 200,
+      "file": "page_00033.json"
+    },
+    {
+      "page": 34,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=33000",
+      "status_code": 200,
+      "file": "page_00034.json"
+    },
+    {
+      "page": 35,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=34000",
+      "status_code": 200,
+      "file": "page_00035.json"
+    },
+    {
+      "page": 36,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=35000",
+      "status_code": 200,
+      "file": "page_00036.json"
+    },
+    {
+      "page": 37,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=36000",
+      "status_code": 200,
+      "file": "page_00037.json"
+    },
+    {
+      "page": 38,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=37000",
+      "status_code": 200,
+      "file": "page_00038.json"
+    },
+    {
+      "page": 39,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=38000",
+      "status_code": 200,
+      "file": "page_00039.json"
+    },
+    {
+      "page": 40,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=39000",
+      "status_code": 200,
+      "file": "page_00040.json"
+    },
+    {
+      "page": 41,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=40000",
+      "status_code": 200,
+      "file": "page_00041.json"
+    },
+    {
+      "page": 42,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=41000",
+      "status_code": 200,
+      "file": "page_00042.json"
+    },
+    {
+      "page": 43,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=42000",
+      "status_code": 200,
+      "file": "page_00043.json"
+    },
+    {
+      "page": 44,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=43000",
+      "status_code": 200,
+      "file": "page_00044.json"
+    },
+    {
+      "page": 45,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=44000",
+      "status_code": 200,
+      "file": "page_00045.json"
+    },
+    {
+      "page": 46,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=45000",
+      "status_code": 200,
+      "file": "page_00046.json"
+    },
+    {
+      "page": 47,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=46000",
+      "status_code": 200,
+      "file": "page_00047.json"
+    },
+    {
+      "page": 48,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=47000",
+      "status_code": 200,
+      "file": "page_00048.json"
+    },
+    {
+      "page": 49,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=48000",
+      "status_code": 200,
+      "file": "page_00049.json"
+    },
+    {
+      "page": 50,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=49000",
+      "status_code": 200,
+      "file": "page_00050.json"
+    },
+    {
+      "page": 51,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=50000",
+      "status_code": 200,
+      "file": "page_00051.json"
+    },
+    {
+      "page": 52,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=51000",
+      "status_code": 200,
+      "file": "page_00052.json"
+    },
+    {
+      "page": 53,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=52000",
+      "status_code": 200,
+      "file": "page_00053.json"
+    },
+    {
+      "page": 54,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=53000",
+      "status_code": 200,
+      "file": "page_00054.json"
+    },
+    {
+      "page": 55,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=54000",
+      "status_code": 200,
+      "file": "page_00055.json"
+    },
+    {
+      "page": 56,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=55000",
+      "status_code": 200,
+      "file": "page_00056.json"
+    },
+    {
+      "page": 57,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=56000",
+      "status_code": 200,
+      "file": "page_00057.json"
+    },
+    {
+      "page": 58,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=57000",
+      "status_code": 200,
+      "file": "page_00058.json"
+    },
+    {
+      "page": 59,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=58000",
+      "status_code": 200,
+      "file": "page_00059.json"
+    },
+    {
+      "page": 60,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=59000",
+      "status_code": 200,
+      "file": "page_00060.json"
+    },
+    {
+      "page": 61,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=60000",
+      "status_code": 200,
+      "file": "page_00061.json"
+    },
+    {
+      "page": 62,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=61000",
+      "status_code": 200,
+      "file": "page_00062.json"
+    },
+    {
+      "page": 63,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=62000",
+      "status_code": 200,
+      "file": "page_00063.json"
+    },
+    {
+      "page": 64,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=63000",
+      "status_code": 200,
+      "file": "page_00064.json"
+    },
+    {
+      "page": 65,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=64000",
+      "status_code": 200,
+      "file": "page_00065.json"
+    },
+    {
+      "page": 66,
+      "url": "https://bipadportal.gov.np/api/v1/incident/?limit=1000&offset=65000",
+      "status_code": 200,
+      "file": "page_00066.json"
+    }
+  ],
+  "sha256": {
+    "records.json": "4e5ba2c8cd5a78023d2e259c5841f3caf3eebdc27569fdf460d56617ef8bc71f",
+    "records.csv": "125cba1d1a615492e78fe77731dccb00b37764d8f0b0c615b2f7345a9f42ce4f"
+  }
+}
