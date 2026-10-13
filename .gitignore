@@ -1,0 +1,48 @@
+# Python bytecode and cache directories
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Local Python environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter-generated files (not the notebooks or their saved outputs)
+.ipynb_checkpoints/
+
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+.streamlit/secrets.toml.*
+
+# Runtime logs and temporary files
+logs/
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Test, type-check, and lint caches / reports
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Build and packaging output
+build/
+dist/
+*.egg-info/
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
