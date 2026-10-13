@@ -71,6 +71,22 @@ st.markdown(
       [data-testid="stToolbar"] {{ right: 1rem; }}
       .block-container {{ max-width: 1540px; padding: 1.5rem 2rem 3rem; }}
       .stApp [data-testid="stMarkdownContainer"] p {{ color: #34483c !important; -webkit-text-fill-color: #34483c !important; opacity: 1 !important; }}
+      /* Streamlit captions and widget labels have their own muted defaults;
+         set an explicit readable contrast on the light workspace. */
+      .stApp [data-testid="stCaptionContainer"],
+      .stApp [data-testid="stCaptionContainer"] *,
+      .stApp [data-testid="stWidgetLabel"],
+      .stApp [data-testid="stWidgetLabel"] *,
+      div[data-testid="stRadio"] [role="radiogroup"] label,
+      div[data-testid="stRadio"] [role="radiogroup"] label *,
+      div[data-testid="stRadio"] label,
+      div[data-testid="stRadio"] label * {{
+        color: #34483c !important;
+        -webkit-text-fill-color: #34483c !important;
+        opacity: 1 !important;
+      }}
+      .stApp [data-testid="stCaptionContainer"] {{ font-size: .9rem; }}
+      div[data-testid="stRadio"] [role="radiogroup"] label {{ font-weight: 600; }}
       section[data-testid="stSidebar"] {{ background: linear-gradient(180deg,#123b2c 0%,#174b36 100%); border-right: 1px solid #dfe8e1; }}
       section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
       section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
@@ -78,10 +94,25 @@ st.markdown(
       section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
       section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {{ color: #edf5ef !important; }}
       section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] * {{ color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-weight: 700; opacity: 1 !important; }}
-      section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {{ color: #c5d8ca !important; }}
+      section[data-testid="stSidebar"] [data-testid="stCaptionContainer"],
+      section[data-testid="stSidebar"] [data-testid="stCaptionContainer"] * {{ color: #d5e5d9 !important; -webkit-text-fill-color: #d5e5d9 !important; opacity: 1 !important; }}
       section[data-testid="stSidebar"] [data-testid="stRadio"] label {{ padding: .55rem .7rem; border-radius: 9px; }}
       section[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {{ background: rgba(255,255,255,.1); }}
-      section[data-testid="stSidebar"] [data-testid="stRadio"] label p {{ color: #edf5ef !important; }}
+      body .stApp section[data-testid="stSidebar"] [data-testid="stRadio"] label,
+      body .stApp section[data-testid="stSidebar"] [data-testid="stRadio"] label *,
+      body .stApp section[data-testid="stSidebar"] [data-testid="stRadio"] label p,
+      body .stApp section[data-testid="stSidebar"] [data-testid="stRadio"] label span {{
+        color: #f4faf5 !important;
+        -webkit-text-fill-color: #f4faf5 !important;
+        opacity: 1 !important;
+        font-weight: 650 !important;
+      }}
+      body section[data-testid="stSidebar"] div[data-testid="stRadio"] [role="radiogroup"] label,
+      body section[data-testid="stSidebar"] div[data-testid="stRadio"] [role="radiogroup"] label * {{
+        color: #f4faf5 !important;
+        -webkit-text-fill-color: #f4faf5 !important;
+        opacity: 1 !important;
+      }}
       section[data-testid="stSidebar"] [data-baseweb="select"] > div,
       section[data-testid="stSidebar"] input {{ background: #fff !important; color: #18382a !important; }}
       section[data-testid="stSidebar"] [data-baseweb="select"] *,
