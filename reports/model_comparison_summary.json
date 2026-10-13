@@ -1,0 +1,12 @@
+{
+  "snapshot_id": "20261013T101245Z",
+  "incident_records": 64735,
+  "pagination_complete": false,
+  "coverage_note": "Pagination ended on an empty page, but API count was an implausible int64 maximum sentinel. Completeness of historical coverage is unverified.",
+  "algorithm_roles": {
+    "DBSCAN": "Explore spatial density and noise among recorded incident locations.",
+    "Hierarchical clustering": "Compare municipality incident hazard/season profiles; current tested partitions were imbalanced or weakly separated.",
+    "Isolation Forest": "Rank unusual municipality-month profiles for manual review; no ground-truth anomaly labels."
+  },
+  "overall_selection": "No single winning model is claimed. Keep the methods as complementary exploratory analyses; review candidate spatial settings and anomaly rows, and do not publish municipality group labels as robust until profile balance and stability improve."
+}
