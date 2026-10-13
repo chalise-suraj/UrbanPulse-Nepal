@@ -167,10 +167,23 @@ streamlit run dashboard.py
 
 The dashboard loads the latest processed incident artifact under `data/processed/bipad_incidents/` and related outputs for that snapshot. It does not fetch data or fit models when it starts. To use a new retrieval, complete the acquisition and analysis notebooks first.
 
+### Run with Docker
+
+Build the image from the repository root and start the dashboard:
+
+```bash
+docker build -t urbanpulse-nepal .
+docker run --rm -p 8501:8501 urbanpulse-nepal
+```
+
+Open [http://localhost:8501](http://localhost:8501). The image includes the repository's saved data artifacts and installs the dependencies from `requirements.txt`. Rebuild the image after changing the notebooks, dashboard, or saved analysis data. Docker Desktop or Docker Engine must be installed and running.
+
 ## Repository layout
 
 ```text
 .
+├── Dockerfile
+├── .dockerignore
 ├── dashboard.py
 ├── requirements.txt
 ├── configs/
