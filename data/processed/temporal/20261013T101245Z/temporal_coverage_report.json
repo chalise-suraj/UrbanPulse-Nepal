@@ -1,0 +1,13 @@
+{
+  "snapshot_id": "20261013T101245Z",
+  "incident_records_with_valid_dates": 64735,
+  "date_min_nepal": "2011-04-14T00:00:00+05:45",
+  "date_max_nepal": "2026-10-13T00:00:00+05:45",
+  "first_observed_year": 2011,
+  "last_observed_year": 2026,
+  "last_year_partial": true,
+  "zero_record_months_inside_observed_date_span": [],
+  "source_pagination_complete": false,
+  "coverage_limitation": "Pagination ended on an empty page, but API count was an implausible int64 maximum sentinel. Completeness of historical coverage is unverified.",
+  "interpretation": "Counts describe this retrieved snapshot, not complete disaster incidence or future risk."
+}
